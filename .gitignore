@@ -1,1 +1,15 @@
+# asdf
 .tool-versions
+
+# Gradle
+.gradle/
+build/
+
+# IntelliJ
+.idea
+*.ipr
+*.iml
+*.iws
+
+# Environment
+.env

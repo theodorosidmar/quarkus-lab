@@ -1,0 +1,10 @@
+quarkus:
+  http:
+    host: localhost
+    port: 8080
+
+application-info:
+  name: quarkus-lab
+  framework:
+    name: Quarkus
+    release-year: 2019

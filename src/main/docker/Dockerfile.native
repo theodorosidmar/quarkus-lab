@@ -1,0 +1,21 @@
+####
+# This Dockerfile is used in order to build a container that runs the Quarkus application in native (no JVM) mode
+# Before building the container image, run:
+# ./gradlew build -Dquarkus.package.type=native
+# Then, build the image with:
+# docker build -f src/main/docker/Dockerfile.native -t quarkus/quarkurs-lab .
+# Then, run the container using:
+# docker run -i --rm -p 8080:8080 quarkus/quarkus-lab
+####
+
+FROM quay.io/quarkus/quarkus-micro-image:1.0
+WORKDIR /app/
+RUN chown 1001 /app \
+    && chmod "g+rwX" /app \
+    && chown 1001:root /app
+COPY --chown=1001:root build/*-runner /app/application
+
+EXPOSE 8080
+USER 1001
+
+CMD ["./application", "-Dquarkus.http.host=0.0.0.0"]
